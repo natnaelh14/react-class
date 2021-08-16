@@ -1,8 +1,8 @@
 import React from "react";
-import Counter from "./components/Counter";
+import OmdbContainer from "./components/OmdbContainer";
 
 function App() {
-  return <Counter />;
+  return <OmdbContainer />;
 }
 
 export default App;
