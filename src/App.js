@@ -1,20 +1,22 @@
-// We import useState and useEffect in our component
+// TODO: Import useEffect hook
 import React, { useState, useEffect } from 'react';
-import SearchBar from './components/SearchBar';
 import IssueList from './components/IssueList';
 
 function App() {
-  // We declare a state variable that is an array called `issues` and a function to update it.
-  const [issues, setIssues] = useState([]);
+  // TODO: Create a state variable `issues` and a function to update it using `useState`
+  const [issues, setIssues] = useState([])
+  // Your code here
 
-  // When the page loads, set the document title to something specific to this app. Runs once because of optional dependency array
+  // TODO: Create a useEffect hook that will invoke our getRepoIssues method passing in "facebook/react" as the desired repo
+  // Your code here
   useEffect(() => {
-    document.title = 'React Hooks Review';
+    getRepoIssues('facebook/react')
   }, []);
 
-  // Helper function that preforms an API request and sets the `issues` array to a list of issues from GitHub
+  // TODO: Create a function that preforms a fetch request to using the provided endpoint. Update state with the results from the API request.
   const getRepoIssues = async (repo) => {
     let issuesURL = `https://api.github.com/repos/${repo}/issues?direction=asc`;
+    // Your code here
     const response = await fetch(issuesURL);
     const data = await response.json();
     setIssues(data);
@@ -22,9 +24,12 @@ function App() {
 
   return (
     <div className="container">
-      {/* Here we pass our getRepoIssues function as a prop to SearchBar */}
-      <SearchBar onFormSubmit={getRepoIssues} />
-      <div className="col auto">
+      <h2 className="header">GitHub issues for React</h2>
+      <span className="text-primary">
+        Stored in state variable <code>issues</code>
+      </span>
+      <hr></hr>
+      <div className="ui grid">
         <div className="row">
           <div className="col-11">
             <IssueList issues={issues} />

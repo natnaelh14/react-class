@@ -3,6 +3,8 @@ import IssueItem from '../components/IssueItem';
 
 // Here we accept an array of issues as a prop
 const IssueList = ({ issues }) => {
+  console.log('IssueList -> issues', issues);
+
   // We create a list of rendered IssueItems by using the map method on `issues`
   const renderedList = issues.map((issue) => {
     return <IssueItem key={issue.id} issue={issue} />;
